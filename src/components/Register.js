@@ -1,9 +1,11 @@
 import { useState } from "react";  
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const base_url = 'https://conexa-backend-challenge.herokuapp.com';
 
 const Register = () => {
+  let navigate = useNavigate();
 
     const [registerStatus, setRegisterStatus] = useState()
 
@@ -24,6 +26,7 @@ const Register = () => {
 
         if (response.status === 200) {
           setRegisterStatus(response.data.message);
+          navigate('/');
         } 
       } catch (error) {
         console.error(error)
@@ -36,11 +39,15 @@ const Register = () => {
 
   return (
     <div className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-  <div className="max-w-md w-full space-y-8 mt-10">
+  <div className="max-w-md w-full space-y-8">
     <div>
-      <h2 className="mt-6 text-center text-3xl font-bold">Register</h2>
-      <p className="mt-2 text-center text-sm text-white-600">
-      </p>
+      <h2 className="mt-6 text-center text-3xl font-bold">Sign up your account</h2>
+      <p className="mt-2 text-center text-sm text-gray-600">
+              Or{' '}
+              <button onClick={() => {navigate('/')}} className="font-medium text-indigo-600 hover:text-indigo-500">
+                login if you already have one
+              </button>
+            </p>
     </div>
 
     <form onSubmit={handleRegisterSubmit} className="mt-8 space-y-6">
