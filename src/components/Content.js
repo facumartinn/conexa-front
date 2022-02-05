@@ -1,6 +1,7 @@
-import { useState } from "react";  
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'
+
+const base_url = 'https://conexa-backend-challenge.herokuapp.com';
 
 function Content() {
   
@@ -15,7 +16,7 @@ function Content() {
           const dataObject = Object.fromEntries(formData);
           
           // Process the data
-          await axios.post("/api/logout", dataObject, {withCredentials: true, credentials: 'include'});
+          await axios.post(`${base_url}/api/logout`, dataObject, {withCredentials: true, credentials: 'include'});
           navigate("/");
           
       } catch (error) {
