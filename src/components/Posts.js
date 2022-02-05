@@ -10,7 +10,7 @@ const Posts = () => {
     const [posts, setPosts] = useState(null);
 
     useEffect(() => {
-      axios.get(`${base_url}/api/posts`).then((response) => {
+      axios.get(`${base_url}/api/posts`, {withCredentials: true, credentials: 'include'}).then((response) => {
         
         if(response.status === 200) {
           setPosts(response.data);

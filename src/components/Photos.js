@@ -9,7 +9,7 @@ export default function App() {
   const [photos, setPhotos] = useState(null);
 
   useEffect(() => {
-    axios.get(`${base_url}/api/photos`).then((response) => {
+    axios.get(`${base_url}/api/photos`, {withCredentials: true, credentials: 'include'}).then((response) => {
       setPhotos(response.data);
     });
   }, []);
