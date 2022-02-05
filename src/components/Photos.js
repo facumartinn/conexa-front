@@ -2,13 +2,14 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+const base_url = 'https://conexa-backend-challenge.herokuapp.com';
 
 export default function App() {
   let navigate = useNavigate();
   const [photos, setPhotos] = useState(null);
 
   useEffect(() => {
-    axios.get('/api/photos').then((response) => {
+    axios.get(`${base_url}/api/photos`).then((response) => {
       setPhotos(response.data);
     });
   }, []);

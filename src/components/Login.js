@@ -2,6 +2,8 @@ import { useState } from "react";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'
 
+const base_url = 'https://conexa-backend-challenge.herokuapp.com';
+
 const Login = () => {
     let navigate = useNavigate();
 
@@ -18,7 +20,7 @@ const Login = () => {
           
           // Process the data
           
-          const response = await axios.post("http://localhost:4000/api/login", dataObject, {withCredentials: true, credentials: 'include'});
+          const response = await axios.post(`${base_url}/api/login`, dataObject, {withCredentials: true, credentials: 'include'});
         
           if (response.status === 200) {
             setLoginStatus(response.data.message);

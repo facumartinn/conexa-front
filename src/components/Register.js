@@ -1,6 +1,8 @@
 import { useState } from "react";  
 import axios from 'axios';
 
+const base_url = 'https://conexa-backend-challenge.herokuapp.com';
+
 const Register = () => {
 
     const [registerStatus, setRegisterStatus] = useState()
@@ -17,7 +19,7 @@ const Register = () => {
         // console.log(dataObject)
         // Process the data
         
-        const response = await axios.post("http://localhost:4000/api/register", dataObject, {withCredentials: true, credentials: 'include'});
+        const response = await axios.post(`${base_url}/api/register`, dataObject, {withCredentials: true, credentials: 'include'});
         // console.log(response.data);
 
         if (response.status === 200) {

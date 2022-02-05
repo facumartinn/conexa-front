@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+const base_url = 'https://conexa-backend-challenge.herokuapp.com';
 
 const Posts = () => {
     let navigate = useNavigate();
@@ -9,7 +10,7 @@ const Posts = () => {
     const [posts, setPosts] = useState(null);
 
     useEffect(() => {
-      axios.get('/api/posts').then((response) => {
+      axios.get(`${base_url}/api/posts`).then((response) => {
         
         if(response.status === 200) {
           setPosts(response.data);
